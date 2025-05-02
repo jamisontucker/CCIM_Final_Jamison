@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4th5xj67hqm1"]
+[gd_scene load_steps=8 format=3 uid="uid://c4th5xj67hqm1"]
 
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="1_podfe"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="2_eiplt"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="3_mfqyf"]
 [ext_resource type="PackedScene" uid="uid://clt88d5d1dje4" path="res://addons/godot-xr-tools/functions/movement_crouch.tscn" id="4_8nm0f"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="4_eiplt"]
-[ext_resource type="Script" uid="uid://07bbkb4cb0bj" path="res://addons/godot-xr-tools/misc/hold_button.gd" id="5_np3td"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="6_8nm0f"]
 
 [node name="XROrigin3D" type="XROrigin3D"]
@@ -25,10 +24,7 @@ strafe = true
 
 [node name="MovementCrouch" parent="LeftHand" instance=ExtResource("4_8nm0f")]
 crouch_height = 0.5
-
-[node name="XRToolsHoldButton" type="Node3D" parent="LeftHand"]
-script = ExtResource("5_np3td")
-metadata/_custom_type_script = "uid://07bbkb4cb0bj"
+crouch_type = 1
 
 [node name="RightHand" type="XRController3D" parent="."]
 tracker = &"right_hand"
@@ -43,4 +39,4 @@ step_turn_angle = 45.0
 
 [node name="PlayerBody" parent="." instance=ExtResource("6_8nm0f")]
 
-[connection signal="pressed" from="LeftHand/XRToolsHoldButton" to="PlayerBody" method="_on_xr_tools_hold_button_pressed"]
+[connection signal="has_picked_up" from="RightHand/FunctionPickup" to="PlayerBody" method="_on_function_pickup_has_picked_up"]

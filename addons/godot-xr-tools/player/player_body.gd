@@ -870,5 +870,5 @@ static func find_instance(node: Node) -> XRToolsPlayerBody:
 		"XRToolsPlayerBody") as XRToolsPlayerBody
 
 
-func _on_xr_tools_hold_button_pressed():
-	print("changeplayerheight")
+func _on_function_pickup_has_picked_up(what: Variant) -> void:
+	pass # Replace with function body.
