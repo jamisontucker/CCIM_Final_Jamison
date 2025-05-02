@@ -1,6 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlnh2jhilckrp"]
+[gd_scene load_steps=12 format=3 uid="uid://dlnh2jhilckrp"]
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_3k4ie"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="2_xmrk8"]
+[ext_resource type="Animation" uid="uid://bediglpx0rj7i" path="res://addons/godot-xr-tools/hands/animations/left/Grip 5.res" id="3_v5v3r"]
+[ext_resource type="Script" uid="uid://dh5digds5jvbu" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="4_kridg"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="5_i63xh"]
+[ext_resource type="Animation" uid="uid://s1vqcxyqcvea" path="res://addons/godot-xr-tools/hands/animations/right/Grip 5.res" id="6_13k7a"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ty7u0"]
 height = 0.1
@@ -15,6 +20,16 @@ top_radius = 0.1
 bottom_radius = 0.1
 height = 0.1
 
+[sub_resource type="Resource" id="Resource_tv3mj"]
+script = ExtResource("4_kridg")
+closed_pose = ExtResource("3_v5v3r")
+metadata/_custom_type_script = "uid://dh5digds5jvbu"
+
+[sub_resource type="Resource" id="Resource_203vt"]
+script = ExtResource("4_kridg")
+closed_pose = ExtResource("6_13k7a")
+metadata/_custom_type_script = "uid://dh5digds5jvbu"
+
 [node name="Cylinder" instance=ExtResource("1_3k4ie")]
 
 [node name="CollisionShape3D" parent="." index="0"]
@@ -22,3 +37,11 @@ shape = SubResource("CylinderShape3D_ty7u0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
 mesh = SubResource("CylinderMesh_q47o7")
+
+[node name="GrabPointHandLeft" parent="." index="2" instance=ExtResource("2_xmrk8")]
+transform = Transform3D(0.866174, 0, 0.499743, 0, 1, 0, -0.499743, 0, 0.866174, -0.134854, 0, 0)
+hand_pose = SubResource("Resource_tv3mj")
+
+[node name="GrabPointHandRight" parent="." index="3" instance=ExtResource("5_i63xh")]
+transform = Transform3D(0.874704, 0, -0.484657, 0, 1, 0, 0.484657, 0, 0.874704, 0.136121, 0, 0)
+hand_pose = SubResource("Resource_203vt")
