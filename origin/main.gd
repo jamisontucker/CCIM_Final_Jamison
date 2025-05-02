@@ -13,4 +13,4 @@ func _ready() -> void:
 		get_viewport().use_xr = true
 		
 	else:
-		print("OpenXR not initialised, please check if your headset is connected")
+		print("OpenXR not initialised, please check if your headset is connected, hahahahah")
