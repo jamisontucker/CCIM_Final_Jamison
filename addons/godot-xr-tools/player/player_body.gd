@@ -868,3 +868,7 @@ static func find_instance(node: Node) -> XRToolsPlayerBody:
 		XRHelpers.get_xr_origin(node),
 		"*",
 		"XRToolsPlayerBody") as XRToolsPlayerBody
+
+
+func _on_xr_tools_hold_button_pressed():
+	print("changeplayerheight")
